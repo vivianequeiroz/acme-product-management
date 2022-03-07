@@ -22,21 +22,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   errorMessage: string;
+  listFilter: string;
 
   @ViewChild("filterElement") filterElementRef: ElementRef;
-  @ViewChildren(NgModel)
-  inputElementsRef: QueryList<ElementRef>;
-
-  private _listFilter: string;
-
-  get listFilter(): string {
-    return this._listFilter;
-  }
-
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.performFilter(this._listFilter);
-  }
+  @ViewChild(NgModel) filterInput: NgModel;
 
   filteredProducts: IProduct[];
   products: IProduct[];
@@ -45,7 +34,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.filterElementRef.nativeElement.focus();
-    console.log(this.inputElementsRef);
+
+    this.filterInput.valueChanges.subscribe(() =>
+      this.performFilter(this.listFilter)
+    );
   }
 
   ngOnInit(): void {
