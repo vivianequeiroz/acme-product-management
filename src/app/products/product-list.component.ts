@@ -7,6 +7,7 @@ import {
   ViewChild,
   ViewChildren,
 } from "@angular/core";
+import { NgModel } from "@angular/forms";
 
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
@@ -23,7 +24,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   errorMessage: string;
 
   @ViewChild("filterElement") filterElementRef: ElementRef;
-  @ViewChildren("filterElement, nameElement")
+  @ViewChildren(NgModel)
   inputElementsRef: QueryList<ElementRef>;
 
   private _listFilter: string;
