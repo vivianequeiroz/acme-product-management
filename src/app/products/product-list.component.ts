@@ -1,13 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from "@angular/core";
-import { NgModel } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
 
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
@@ -16,43 +7,26 @@ import { ProductService } from "./product.service";
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.css"],
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   showImage: boolean;
   imageWidth: number = 50;
   imageMargin: number = 2;
   errorMessage: string;
-  listFilter: string;
-
-  @ViewChild("filterElement") filterElementRef: ElementRef;
-  @ViewChild(NgModel) filterInput: NgModel;
 
   filteredProducts: IProduct[];
   products: IProduct[];
 
   constructor(private productService: ProductService) {}
 
-  ngAfterViewInit(): void {
-    this.filterElementRef.nativeElement.focus();
-
-    this.filterInput.valueChanges.subscribe(() =>
-      this.performFilter(this.listFilter)
-    );
-  }
-
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
       (products: IProduct[]) => {
         this.products = products;
-        this.performFilter(this.listFilter);
+        this.performFilter();
       },
       (error: any) => (this.errorMessage = <any>error)
     );
-  }
-
-  onFilterChange(filter: string): void {
-    this.listFilter = filter;
-    this.performFilter(this.listFilter);
   }
 
   performFilter(filterBy?: string): void {
