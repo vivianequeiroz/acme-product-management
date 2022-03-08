@@ -10,6 +10,8 @@ import { ProductService } from "./product.service";
 export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   showImage: boolean;
+  includeDetail: boolean = true;
+
   imageWidth: number = 50;
   imageMargin: number = 2;
   errorMessage: string;
