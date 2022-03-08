@@ -12,6 +12,7 @@ import {
   styleUrls: ["./criteria.component.css"],
 })
 export class CriteriaComponent implements OnInit, AfterViewInit {
+  listFilter: string;
   @ViewChild("filterElement") filterElementRef: ElementRef;
   constructor() {}
 
