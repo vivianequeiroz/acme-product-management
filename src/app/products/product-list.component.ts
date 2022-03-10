@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { CriteriaComponent } from "../shared/criteria/criteria.component";
 
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
@@ -11,6 +12,9 @@ export class ProductListComponent implements OnInit {
   pageTitle: string = "Product List";
   showImage: boolean;
   includeDetail: boolean = true;
+
+  @ViewChild(CriteriaComponent) filterComponent: CriteriaComponent;
+  parentListFilter: string;
 
   imageWidth: number = 50;
   imageMargin: number = 2;
@@ -25,7 +29,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (products: IProduct[]) => {
         this.products = products;
-        this.performFilter();
+        this.performFilter(this.parentListFilter);
       },
       (error: any) => (this.errorMessage = <any>error)
     );

@@ -16,10 +16,10 @@ import {
 })
 export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
   listFilter: string;
+  hitMessage: string;
 
   @Input() displayCriteria: boolean;
   @Input() hitCount: number;
-  hitMessage: string;
 
   @ViewChild("filterElement") filterElementRef: ElementRef;
   constructor() {}
