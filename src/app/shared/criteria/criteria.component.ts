@@ -3,7 +3,9 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from "@angular/core";
 
@@ -12,14 +14,27 @@ import {
   templateUrl: "./criteria.component.html",
   styleUrls: ["./criteria.component.css"],
 })
-export class CriteriaComponent implements OnInit, AfterViewInit {
+export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
   listFilter: string;
 
   @Input() displayCriteria: boolean;
   @Input() hitCount: number;
+  hitMessage: string;
 
   @ViewChild("filterElement") filterElementRef: ElementRef;
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let isHitCount = !(
+      changes["hitCount"] && !changes["hitCount"].currentValue
+    );
+
+    if (!isHitCount) {
+      this.hitMessage = "No matches found";
+    } else {
+      this.hitMessage = "Hits: " + this.hitCount;
+    }
+  }
 
   ngAfterViewInit(): void {
     if (this.filterElementRef) {
