@@ -15,7 +15,7 @@ import {
   styleUrls: ["./criteria.component.css"],
 })
 export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
-  listFilter: string;
+  listFilter: string = "cart";
   hitMessage: string;
 
   @Input() displayCriteria: boolean;
