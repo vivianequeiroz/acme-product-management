@@ -2,9 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild,
 } from "@angular/core";
@@ -15,14 +17,26 @@ import {
   styleUrls: ["./criteria.component.css"],
 })
 export class CriteriaComponent implements OnInit, OnChanges, AfterViewInit {
-  listFilter: string = "cart";
   hitMessage: string;
+
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Input() displayCriteria: boolean;
   @Input() hitCount: number;
 
   @ViewChild("filterElement") filterElementRef: ElementRef;
   constructor() {}
+
+  private _listFilter: string;
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.valueChange.emit(value);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     let isHitCount = !(
