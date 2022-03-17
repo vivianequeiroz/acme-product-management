@@ -11,11 +11,13 @@ export class ProductShellDetailComponent implements OnInit {
 
   // a simple property declaration would be only called once, at the time component was rendered
   // so it would not keep sync between components
-  get product(): IProduct | null {
-    return this.productService.currentProduct;
-  }
+  product: IProduct | null;
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.productService.selectedProductChanges$.subscribe(
+      (selectedProduct) => (this.product = selectedProduct)
+    );
+  }
 }
