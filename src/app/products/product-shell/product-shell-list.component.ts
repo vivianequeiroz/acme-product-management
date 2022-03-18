@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
 import { IProduct } from "../product";
 import { ProductService } from "../product.service";
@@ -7,16 +8,18 @@ import { ProductService } from "../product.service";
   selector: "pm-product-shell-list",
   templateUrl: "./product-shell-list.component.html",
 })
-export class ProductShellListComponent implements OnInit {
+export class ProductShellListComponent implements OnInit, OnDestroy {
   pageTitle: string = "Products";
   errorMessage: string;
   products: IProduct[];
   selectedProduct: IProduct | null;
 
+  subscription: Subscription;
+
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.selectedProductChanges$.subscribe(
+    this.subscription = this.productService.selectedProductChanges$.subscribe(
       (selectedProduct) => (this.selectedProduct = selectedProduct)
     );
 
@@ -30,5 +33,9 @@ export class ProductShellListComponent implements OnInit {
 
   onSelected(product: IProduct): void {
     this.productService.changeSelectedProduct(product);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

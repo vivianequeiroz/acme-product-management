@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
+import { Subscription } from "rxjs";
 import { CriteriaComponent } from "../shared/criteria/criteria.component";
 
 import { IProduct } from "./product";
@@ -9,7 +16,7 @@ import { ProductService } from "./product.service";
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.css"],
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitle: string = "Product List";
   includeDetail: boolean = true;
 
@@ -22,6 +29,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   filteredProducts: IProduct[];
   products: IProduct[];
+
+  subscription: Subscription;
 
   get showImage() {
     return this.productParameterService.showImage;
@@ -41,7 +50,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
+    this.subscription = this.productService.getProducts().subscribe(
       (products: IProduct[]) => {
         this.products = products;
         this.filterComponent.listFilter = this.productParameterService.filterBy;
@@ -70,5 +79,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
