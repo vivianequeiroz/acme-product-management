@@ -32,7 +32,7 @@ Intended for those who needs to administrate the supplies of a construction mate
 <h2> 🌱 🌳 Contributions </h2>
 
     1. Make a fork of this project
-    2. Make a new branch from master with your implementations:
+    2. Make a new branch from main with your implementations:
        $ git checkout -b your-branch-here
     3. Commit your changes: 
        $ git commit -m 'feat: your feature'
