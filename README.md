@@ -1,27 +1,45 @@
-# APM
+<meta charset="utf-8">
+<h1 align="center"> Acme Product Management </h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+<br>
+<h2>📦 Website proposal </h2>
+Itended for those who needs to administrate the supplies of a construction materials store through CRUD operations.  
+<br>
+<br>
+<h2> 🎯 Project goal </h2>
+    <p>Acme Product Management is a SPA developed with Angular framework during the course <strong>Angular Component Communication</strong> from <a target="_blank" href="https://www.pluralsight.com/">Pluralsight</a> that focus on the understanding pros and cons of the main strategies to achieve state management at an Angular application, such as:</p>
 
-## Development server
+- Binding (interpolation, event, property and two-way binding) and structural directives
+- Getters and setters
+- ViewChild and ViewChildren decorators 
+- Template reference variables
+- onChanges Lifecycle Hook
+- Input and Output properties
+- Property Bag Service
+- State Management Service
+- Service notifications with Subject and BahaviorSubject
+- Through Router parameters
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<br>
+<br>
+<h2> ⚙️ Tecnologies </h2>
 
-## Code scaffolding
+  - [Angular](https://angular.io/)
+  - [Typescript](https://www.typescriptlang.org/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<br> 
+<br>
+<h2> 🌱 🌳 Contributions </h2>
 
-## Build
+    1. Make a fork of this project
+    2. Make a new branch from master with your implementations:
+       $ git checkout -b your-branch-here
+    3. Commit your changes: 
+       $ git commit -m 'feat: your feature'
+    4. Push your changes:
+       $ git push origin your-branch-here
+    5. Open a pull request
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<br><br>
+<p align="center">Made with 💛  by <a target="_blank" href="https://www.linkedin.com/in/vivianedsqueiroz/
+">Viviane Queiroz</a> 👩‍💻 ✨
