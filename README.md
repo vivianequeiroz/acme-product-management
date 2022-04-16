@@ -3,7 +3,7 @@
 
 <br>
 <h2>📦 Website proposal </h2>
-Itended for those who needs to administrate the supplies of a construction materials store through CRUD operations.  
+Intended for those who needs to administrate the supplies of a construction materials store through CRUD operations.  
 <br>
 <br>
 <h2> 🎯 Project goal </h2>
